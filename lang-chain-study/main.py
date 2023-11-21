@@ -9,6 +9,7 @@ import torch
 from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
 from modelscope import AutoTokenizer, AutoModel, snapshot_download
+from langchain.chains import LLMChain
 
 model_dir = snapshot_download("ZhipuAI/chatglm3-6b", revision="v1.0.0")
 tokenizer = AutoTokenizer.from_pretrained(model_dir, trust_remote_code=True)
