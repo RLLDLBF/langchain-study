@@ -23,6 +23,15 @@ prompt = PromptTemplate(
     template="What is a good name for a company that makes {product}?",
 )
 
+prompt_template = PromptTemplate.from_template(
+    "Tell me a {adjective} joke about {content}."
+)
+
+jinja2_template = "Tell me a {{ adjective }} joke about {{ content }}"
+prompt_2 = PromptTemplate.from_template(jinja2_template, template_format="jinja2")
+
+fstring_template = """Tell me a {adjective} joke about {content}"""
+prompt_3 = PromptTemplate.from_template(fstring_template)
 
 # os.environ["OPENAI_API_KEY"] = "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"
 
@@ -41,6 +50,9 @@ if __name__ == '__main__':
     # print(llm(text))
 
     print(prompt.format(product="colorful socks"))
+    print(prompt_template.format(adjective="funny", content="chickens"))
+    print(prompt_2.format(adjective="funny", content="chickens"))
+    print(prompt_3.format(adjective="funny", content="chickens"))
 
     # response, history = model.chat(tokenizer, "你好", history=[])
     # print(response)
